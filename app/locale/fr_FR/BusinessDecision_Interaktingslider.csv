@@ -1,0 +1,57 @@
+"Interaktingslider","Interakting Slider"
+
+"Add New Slide","Nouvelle Diapo"
+"New Slide","Nouvelle Diapo"
+"Save Slide","Sauvegarder la Diapo"
+"From Time","Date et heure de début"
+"To Time","Date et heure de Fin"
+
+"Manage Slides","Gestion des Diapos"
+"Interaktingslider Slides","Liste des Diapos"
+"Edit Slide '%s'","Edition de la Diapo '%s'"
+"Preview in ","Aperçu dans"
+"Delete Slide","Supprimer la Diapo"
+
+
+"Slides Positions","Positions des Diapos"
+"Slides Positions in","Positions des Diapos dans"
+"Position","Position"
+"Move to","Déplacer"
+
+"Parameters","Paramètres"
+"Enable Interaktingslider","Activer Diaporama"
+"Display when empty","Afficher le Diaporama Vide"
+"No Slide Message","Message Diaporama Vide"
+"Navigation mode","Mode de défilement"
+"Auto","Automatique"
+"Manual","Manuel"
+"Mixte","Automatique + Manuel"
+"Max number of slides to display in front", "Nombre max de diapos à afficher en front"
+
+"Style","Style"
+"Skin","Thème"
+
+"Transitions","Enchainement"
+"Display time for each slide (s)","Temps d’affichage de chaque diapositive (en secondes)"
+"(default 5 seconds)","(5 secondes par défaut)"
+"Effect","Effet"
+"Duration (ms)","Durée de l'effet (en millisecondes)"
+"(default 500 milliseconds)","(500 millisecondes par défaut)"
+"(default 10)","(10 par défaut)"
+
+"No Effect","Aucun"
+"Cross Fade","Fondu Enchainé"
+"Blind Down new slide","Descendre la nouvelle diapo"
+"Blind Up previous slide","Remonter la diapo précédente"
+
+"Slide was successfully saved","La diapo a été sauvegardée avec succès"
+"Slide was successfully deleted","La diapo à été supprimée avec succès"
+"Are you sure?","En êtes-vous sûr ?"
+"Are you sure you want to delete this slide ?","Etes vous sûr de vouloir supprimer cette diapo ?"
+"Unable to find a slide to delete","Impossible de trouver de diapo à supprimer"
+"This slide no longer exists","Cette diapo n'existe plus"
+"Preview of","Aperçu de"
+
+"This store don't exist","Cette vue magasin n'existe pas"
+"Slide '%s' was successfully updated","La diapo '%s' a été mise a jour avec succès"
+"You must set a date to value greater than the date from value","Vous devez renseigner une date de fin supérieur à la date de début"

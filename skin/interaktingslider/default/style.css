@@ -1,0 +1,173 @@
+/**
+* Interakting Slider
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com and you will be sent a copy immediately.
+*
+* @category   BusinessDecision
+* @package    BusinessDecision_Interaktingslider
+* @author     Business & Decision Picardie - contactmagento@interakting.com
+* @copyright  Copyright (c) 2009 Business & Decision (http://www.businessdecision.com)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/  
+
+#frame{
+	text-align:left;
+	width:680px;
+	height:300px;
+	
+    border:1px solid #D0CBC1;
+    background:url([[IMAGES_FOLDER]]/base_mini_head_bg.gif) repeat-x #fff;
+   
+}
+
+#frame div{	
+	position:absolute;	
+}
+
+#frame div div{
+
+}
+
+
+#top-left{
+	margin-top:0px; margin-left:0px; width:10px; height:10px;
+	display:none;
+}
+
+#top-center{
+	margin-top:0px; margin-left:10px; width:660px; height:10px;
+	display:none;
+}
+
+#top-right{
+	margin-top:0px; margin-left:670px; width:10px; height:10px;
+	display:none;
+}
+
+#middle-left{
+	margin-top:10px; margin-left:0px; width:10px; height:280px;
+	display:none;
+}
+
+#middle-center{
+	margin-top:10px; margin-left:10px; width:658px; height:278px;
+	border:1px solid #DDD;
+}
+
+#middle-right{
+	margin-top:10px; margin-left:670px; width:10px; height:280px;
+	display:none;
+}
+
+#bottom-left{
+	margin-top:290px; margin-left:0px;width:10px;height:30px;
+	display:none;
+}
+
+#bottom-center{
+
+	margin-top:290px;margin-left:10px;width:660px;height:30px;
+	display:none;
+}
+
+#bottom-right{
+	margin-top:290px;margin-left:670px;width:10px;height:30px;
+	display:none;
+}
+
+.slide{
+	position:absolute;	
+	text-align:left;
+	width:647px;
+	height:277px;
+	padding:5px;
+	margin:0px;
+	background:#f8f7f5;
+	color:#2f2f2f; font:12px/1.55em arial, helvetica, sans-serif;
+}
+
+
+.slide * {
+	margin:0 ; padding:0;
+}
+
+.slide table {
+	margin: auto; padding: auto;
+}
+
+.slide h1, .slide h2, .slide h3, .slide h4{
+	color:#e65505; 
+	text-transform:uppercase;
+}
+
+.slide h1 { font-size:2em; line-height:1.17; }
+.slide h2 { font-size:1.5em; }
+.slide h3 { font-size:1.35em; }
+.slide h4 { font-size:1.05em; }
+.slide h5 { font-size:1.05em; }
+.slide h6 { font-size:.95em; }
+
+.slide a { color:#1e7ec8; text-decoration:underline; }
+.slide a:hover { color:#1e7ec8; text-decoration:underline; }
+.slide a img { border:0;}
+
+
+#slide-content{
+	text-align:left;
+	margin-top:1px;
+	margin-left:1px;
+	width:657px;
+	height:277px;
+	overflow:hidden;
+}
+
+#slide-commands{
+	position:absolute;
+	text-align:center;
+	width:660px;
+	border-top:1px solid #DDD;
+	margin-top:258px;
+	margin-left:-1px;
+	padding-top:2px;
+	z-index:5;
+	background:#fff;
+}
+
+#slide-commands a{
+	display:inline-block;
+	text-decoration: none ;
+	margin:2px;	
+	overflow:visible;
+    width:auto;
+    padding:1px 8px;
+    color:#fff;
+    border:1px solid #de5400;
+    font:bold 12px arial, sans-serif !important;
+    cursor:pointer;
+    text-align:center;
+    vertical-align:middle;
+}
+
+#prev{
+	
+}
+
+#next{
+	
+}
+
+.active{
+background:#de5400;
+}
+
+.normal{
+background:#f18200;
+}

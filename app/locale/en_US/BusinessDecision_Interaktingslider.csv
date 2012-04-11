@@ -1,0 +1,46 @@
+"Interaktingslider","Interakting Slider"
+
+"Add New Slide","Add New Slide"
+"New Slide","New Slide"
+"Save Slide","Save Slide"
+"From Time","Start Date"
+"To Time","End Date"
+
+"Manage Slides","Manage Slides"
+"Interaktingslider Slides","Slides List"
+"Edit Slide '%s'","Edit Slide '%s'"
+"Preview in","Preview in"
+"Delete Slide","Delete Slide"
+
+
+"Slides Positions","Slides Positions"
+"Slides Positions in","Slides Positions in"
+"Position","Position"
+"Move to","Move to"
+
+"Parameters","Parameters"
+"Enable Interaktingslider","Enable Slideshow"
+"Display when empty","Display when empty"
+"No Slide Message","No Slide Message"
+"Navigation mode","Navigation mode"
+"Auto","Automatic"
+"Manual","Manual"
+"Mixte","Automatic + Manual"
+"Max number of slides to display in front", "Max number of slides to display in front"
+
+"Style","Style"
+"Skin","Skin"
+
+"Transitions","Transitions"
+"Delay between slides (s)","Delay between slides (s)"
+"(default 5 seconds)","(default 5 seconds)"
+"Effect","Effect"
+"Duration (ms)","Duration (ms)"
+"(default 500 milliseconds)","(default 500 milliseconds)"
+"(default 10)","(default 10)"
+
+"No Effect","No Effect"
+"Cross Fade","Cross Fade"
+"Blind Down new slide","Blind Down new slide"
+"Blind Up previous slide","Blind Up previous slide"
+"You must set a date to value greater than the date from value","You must set a date to value greater than the date from value"

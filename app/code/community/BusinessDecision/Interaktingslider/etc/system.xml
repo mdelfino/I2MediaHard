@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* Interakting Slider
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com and you will be sent a copy immediately.
+*
+* @category   BusinessDecision
+* @package    BusinessDecision_Interaktingslider
+* @author     Business & Decision Picardie - contactmagento@interakting.com
+* @copyright  Copyright (c) 2009 Business & Decision (http://www.businessdecision.com)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/ 
+
+-->
+<config>
+	<sections>
+		<interaktingslider translate="label">
+			<label>Interaktingslider</label>
+			<tab>general</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>335</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<config translate="label">
+					<label>Parameters</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enable Interaktingslider</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</active>
+						<show_no_slide translate="label">
+							<label>Display when empty</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</show_no_slide>
+						<no_slide_text translate="label">
+							<label>No Slide Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</no_slide_text>
+						<mode translate="label">
+							<label>Navigation mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>interaktingslider/source_mode</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</mode>      
+						<max_slide translate="label">
+							<label>Max number of slides to display in front</label>
+							<comment>(default 10)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</max_slide>      
+                   </fields>
+            	</config>
+				<style translate="label">
+					<label>Style</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<skin translate="label">
+                            <label>Skin</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>interaktingslider/source_skin</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skin>       
+                   </fields>
+            	</style>
+            	<transition translate="label">
+					<label>Transitions</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+                        <delay translate="label">
+                            <label>Display time for each slide (s)</label>
+                            <comment>(default 5 seconds)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delay>
+                        <effect translate="label">
+                            <label>Effect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>interaktingslider/source_effect</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </effect>
+                        <delayeffect translate="label">
+                            <label>Duration (ms)</label>
+                            <comment>(default 500 milliseconds)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </delayeffect>      
+                   </fields>
+            	</transition>
+			</groups>
+		</interaktingslider>
+	</sections>
+</config>

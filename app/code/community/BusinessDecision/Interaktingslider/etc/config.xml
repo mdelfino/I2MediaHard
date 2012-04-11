@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+* Interakting Slider
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com and you will be sent a copy immediately.
+*
+* @category   BusinessDecision
+* @package    BusinessDecision_Interaktingslider
+* @author     Business & Decision Picardie - contactmagento@interakting.com
+* @copyright  Copyright (c) 2009 Business & Decision (http://www.businessdecision.com)
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/ 
+-->
+<config>
+    <modules>
+        <BusinessDecision_Interaktingslider>
+            <version>1.0.6</version>
+        </BusinessDecision_Interaktingslider>
+    </modules>
+    
+	<global>
+	  <rewrite>
+                <mage_adminhtml_system_variable>           
+                       <from><![CDATA[#^/interaktingslider/system_variable#]]></from>
+                       <to>/admin/system_variable</to>
+                </mage_adminhtml_system_variable>           
+       </rewrite>
+       		 <models>
+        	 <interaktingslider>
+        	 	<class>BusinessDecision_Interaktingslider_Model</class>
+        	 	<resourceModel>interaktingslider_mysql4</resourceModel>
+        	 </interaktingslider>
+        	 <interaktingslider_mysql4>
+                <class>BusinessDecision_Interaktingslider_Model_Mysql4</class>
+                <entities>
+                    <slide>
+                        <table>interaktingslider_slide</table>
+                    </slide>
+                    <slide_store>
+                        <table>interaktingslider_slide_store</table>
+                    </slide_store>
+                    <slide_position>
+                        <table>interaktingslider_slide_position</table>
+                    </slide_position>
+                </entities>
+            </interaktingslider_mysql4>
+        </models>
+        <resources>
+            <interaktingslider_setup>
+                <setup>
+                    <module>BusinessDecision_Interaktingslider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </interaktingslider_setup>
+            <interaktingslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </interaktingslider_write>
+            <interaktingslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </interaktingslider_read>
+        </resources>
+        <blocks>
+            <interaktingslider><class>BusinessDecision_Interaktingslider_Block</class></interaktingslider>
+        </blocks>
+       
+        <helpers>
+        	 <interaktingslider><class>BusinessDecision_Interaktingslider_Helper</class></interaktingslider>
+        </helpers>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <page>
+                    <file>page.xml</file>
+                </page>
+            </updates>
+        </layout>
+    </frontend>
+    
+   <admin>
+          <routers>
+                  <businessdecision_interaktingslider>
+                      <use>admin</use>
+                      <args>
+                          <module>BusinessDecision_Interaktingslider</module>
+                          <frontName>interaktingslider</frontName>
+                      </args>
+                  </businessdecision_interaktingslider>
+          </routers>
+    </admin>
+    
+    <adminhtml>
+    	<acl>
+			<resources>
+				<admin>
+					<children>
+                       <interaktingslider translate="title">
+                            <title>Interaktingslider</title>
+                            <children>
+                                <new translate="title">
+                                    <title>Export</title>
+                                </new>
+                                <slide translate="title">
+                                    <title>Add New Slide</title>
+                                </slide>
+                                <position translate="title">
+                                    <title>Slides Positions</title>
+                                </position>
+                            </children>
+                            <sort_order>65</sort_order>
+                        </interaktingslider>
+						<system>
+							<children>
+								<config>
+									<children>
+										<interaktingslider>
+											<title>Interaktingslider</title>
+											<sort_order>101</sort_order>
+										</interaktingslider>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<menu>
+            <interaktingslider translate="title" module="interaktingslider">
+                <title>Interaktingslider</title>
+                <sort_order>65</sort_order>
+                <children>
+                	<new translate="title" module="interaktingslider">
+                        <title>Add New Slide</title>
+                        <action>interaktingslider/admin_slide/new/</action>
+                        <resource>interaktingslider/admin/slide</resource>
+                    </new>
+                    <slide translate="title" module="interaktingslider">
+                        <title>Manage Slides</title>
+                        <action>interaktingslider/admin_slide/</action>
+                        <resource>interaktingslider/admin/slide</resource>
+                    </slide>
+                    <position translate="title" module="interaktingslider">
+                        <title>Slides Positions</title>
+                        <action>interaktingslider/admin_position/</action>
+                        <resource>interaktingslider/admin/position</resource>
+                    </position>
+                </children>
+            </interaktingslider>
+        </menu>
+         <translate>
+            <modules>
+                <BusinessDecision>
+                    <files>
+                        <default>BusinessDecision_Interaktingslider.csv</default>
+                    </files>
+                </BusinessDecision>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <default>
+    	<interaktingslider>
+    		<config>
+    			<active>1</active>
+    			<show_no_slide>1</show_no_slide>
+    			<no_slide_text>No Slide</no_slide_text>
+    			<max_slide>10</max_slide>
+    		</config>
+    		<style>
+    			<skin>default</skin>
+    			<usebuttons>1</usebuttons>
+    		</style>
+    		<transition>
+    			<delay>5</delay>
+    			<effect>0</effect>
+    			<delayeffect>500</delayeffect>
+    		</transition>	
+    		
+    	</interaktingslider>
+    </default>
+</config>
