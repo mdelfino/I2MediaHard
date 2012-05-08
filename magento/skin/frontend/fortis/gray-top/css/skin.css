@@ -1,0 +1,66 @@
+/* Main backgrounds and colors */
+
+.wrapper { background-image:url(../images/img/top-bg.jpg); }
+
+
+/* Secondary elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Header */
+.header { color:#555; }
+.header a { color:#555; }
+.header a:hover { color:#000; }
+
+
+/* Static block: top links */
+.header-top-links-wrapper li { border-right:1px solid #999; }
+
+
+/* Top dropdown */
+.top-dropdown:hover .label { background-color:#eee; color:#555; }
+.top-dropdown ul { background-color:#eee; }
+.top-dropdown li { color:#777; /* Color of selected element */ }
+.top-dropdown a:hover { color:#000; }
+
+
+/* Header top - help */
+.header-top .header-top-help-wrapper .phone { background-image:url(../images/img/ic-phone-light.png); }
+
+
+/* Form search */
+.header .form-search .input-text { background-color:#e5e5e5; color:#777; }
+.header .form-search .input-text:hover,
+.header .form-search .input-text:focus { background-color:#fff; color:#333; }
+
+
+/* User menu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.user-menu > ul > li {
+	background-color:rgba(255,255,255, 0.3);
+}
+.user-menu > ul > li:hover {
+	background-color:rgba(255,255,255, 0.4);
+}
+.user-menu > ul > li.item-1 { background-image:url(../images/img/ic-toplinks-account.png); }
+.user-menu > ul > li.item-2 { background-image:url(../images/img/ic-toplinks-wishlist.png); }
+.user-menu > ul > li.item-3 { background-image:url(../images/img/ic-toplinks-log.png); }
+.user-menu > ul > li.user-menu-signup { background-image:url(../images/img/ic-toplinks-signup.png); }
+.user-menu > ul > li.user-menu-custom { background-image:url(../images/img/ic-toplinks-custom.png); }
+
+.user-menu > ul > li > a { color:#444; }
+.user-menu > ul > li > a:hover { color:#222; }
+
+.user-menu .user-menu-item { color:#444; }
+.user-menu .user-menu-item:hover { color:#222; }
+
+
+/* Mini-cart
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+#mini-cart .block-title .heading { background-position:-70px -205px; }
+#mini-cart:hover .block-title .heading { background-position:-70px -205px; }
+
+#mini-cart .block-title .summary a { color:#555; }
+#mini-cart .block-title .to-checkout a { color:#044e8f; }
+#mini-cart .block-title .to-checkout .icon { background-position:-27px -177px; }

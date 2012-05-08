@@ -1,0 +1,34 @@
+
+/* Dropdown submenu position is relative to this element.
+   It is displayed under the active tab. */
+#nav li { position:relative; }
+
+/* 2nd Level
+-------------------------------------------------------------- */
+#nav ul,
+#nav div {
+	position:absolute; 
+	top:41px;
+	left:-10000px;
+	background-color:#fff;
+	width:16em;
+	padding:20px 0;
+	border:0;
+	/*-moz-border-radius:0 2px 2px 2px; -webkit-border-radius:0 2px 2px 2px; border-radius:0 2px 2px 2px;*/
+}
+#nav div ul { position:static; width:auto; border:none; }
+#nav ul li { float:none; }
+#nav ul li.parent { background:url(../images/img/menu-bullet.gif) 93% 13px no-repeat; }
+#nav ul li a { float:none; padding:2px 25px; }
+
+/* 3rd Level+
+-------------------------------------------------------------- */
+#nav ul ul,
+#nav ul div { top:0px; }
+
+/* Show submenu
+-------------------------------------------------------------- */
+#nav li ul.shown-sub,
+#nav li div.shown-sub { left:3px; }
+#nav li .shown-sub ul.shown-sub,
+#nav li .shown-sub li div.shown-sub { left:80px; }

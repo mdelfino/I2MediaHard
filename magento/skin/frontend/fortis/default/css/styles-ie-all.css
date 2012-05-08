@@ -1,0 +1,179 @@
+
+/* User menu hover transparent background color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.user-menu > ul > li { /* white 10% */
+	background-color:transparent;
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19FFFFFF,endColorstr=#19FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19FFFFFF,endColorstr=#19FFFFFF);
+	zoom:1;
+}
+.user-menu > ul > li:hover { /* white 20% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+	zoom:1;
+}
+
+
+/* Main footer transparent background color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.footer-item { /* black 10% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19000000,endColorstr=#19000000);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#19000000,endColorstr=#19000000);
+	zoom:1;
+}
+
+
+/* Form boxes in the footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.store-switcher select,
+#subscribe-form .input-text { /* white 25% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3FFFFFFF,endColorstr=#3FFFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3FFFFFFF,endColorstr=#3FFFFFFF);
+	zoom:1;
+}
+#subscribe-form .input-text:hover { /* white 35% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#59FFFFFF,endColorstr=#59FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#59FFFFFF,endColorstr=#59FFFFFF);
+	zoom:1;
+}
+#subscribe-form .input-text:focus { /* white 50% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF);
+	zoom:1;
+}
+
+
+
+
+/* Mini cart
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+#mini-cart .block-title .to-checkout { border-left:1px solid #656565; }
+#mini-cart .block-title .to-checkout .icon { vertical-align:middle; }
+/* Mini cart dropdown */
+#mini-cart .block-content { top:51px; /* 1px higher than other browsers */ }
+
+
+/* Borders instead of dropdown shadows
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Main menu dropdown */
+#nav ul.level0,
+#nav div.level0,
+/* Main menu dropdown (standard style) */
+.nav-standard #nav ul.shown-sub,
+/* Mini cart dropdown */
+#mini-cart .block-content {
+	border-top:none;
+	border-right:1px solid #bbb;
+	border-bottom:1px solid #bbb;
+	border-left:none;
+}
+
+/* Remember Me popup, MAP popup, credit card number */
+.remember-me-popup,
+.map-popup,
+.tool-tip { border:1px solid #e5e5e5; }
+
+/* Edgeboxes */
+.edgebox-content .custom-content { border:1px solid #bbb; }
+
+
+
+/* Tooltips
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.tooltip { background-color:#111; }
+
+
+
+/* Remember Me Popup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.window-overlay { background-color:#000; filter:alpha(opacity=35); }
+
+
+
+
+/* From Magento default styles-ie.css
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Clears and hasLayout fixes */
+.header-container,
+.header-container .top-container,
+.header,
+.header .quick-access,
+#nav,
+.main,
+.footer,
+.footer-container .bottom-container,
+.col-main,
+.col2-set,
+.col3-set,
+.col3-layout .product-options-bottom .price-box,
+.col4-set,
+.messages li,
+.search-autocomplete li,
+.block,
+.block .block-content,
+.block .actions,
+.block li.item,
+.block-poll li,
+.block-poll .label,
+.block-layered-nav .currently li,
+.block-account .block-content li a,
+.mini-products-list .product-details,
+.page-title,
+.rss-title h1,
+.products-grid,
+.products-list li.item,
+.box-account .box-head,
+.dashboard .box .box-title,
+.box-reviews li.item,
+.box-tags li.item,
+.pager,
+.sorter,
+.ratings,
+.add-to-box,
+.add-to-cart,
+.product-essential,
+.product-collateral,
+.product-view .product-img-box .more-views ul,
+.product-view .box-tags .form-add,
+.product-view .product-shop .short-description,
+.product-view .box-description,
+.product-options .options-list li,
+.product-options,
+.product-options-bottom,
+.truncated,
+.truncated .truncated_full_value,
+.product-review,
+.cart,
+.cart-collaterals,
+.cart .crosssell li.item,
+.cart .discount,
+.opc .step-title,
+.opc .step,
+.multiple-checkout,
+.sp-methods,
+.checkout-progress,
+.multiple-checkout .place-order,
+.form-list li,
+.form-list .field,
+.group-select li,
+.buttons-set,
+.page-print .print-head,
+.cart-tax-total,
+.advanced-search-summary,
+.advanced-search-summary p,
+.gift-messages-form .item,
+.send-friend .form-list li p,
+.centinel .authentication { zoom:1; }
+
+/* Hover Fix */
+iframe.hover-fix { position:absolute; left:-1px; top:-1px; z-index:-1; background:transparent; filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0); }

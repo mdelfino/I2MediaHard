@@ -1,0 +1,14 @@
+/* Reset negative value of the top margin of old prices */
+.product-view .product-shop .price-box .old-price { margin-top:0; }
+
+/* Remove icon */
+button.btn-checkout span span .img-checkout { display:none; }
+
+/* clearer: IE6/7 */
+.clearer {
+	display:block; clear:both; font-size:12px; line-height:15px; height:auto; overflow:hidden;
+}
+
+/* Clearing */
+.cart .crosssell
+{ display:block; clear:both; font-size:12px; line-height:15px; height:auto; overflow:hidden; }

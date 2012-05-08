@@ -1,0 +1,41 @@
+<?php
+/**
+ * A copy of media_labels.phtml
+ * - IMPORTANT: Removed "$_product = $this->getProduct();". Product object already exists in list.phtml, where this file is included.
+ */
+?>
+<?php //Removed: $_product = $this->getProduct(); ?>
+<?php
+	// Check if displaying "new" label is enabled and if product is marked as "new"
+	$_isNew = false;
+	if (Mage::getStoreConfig('themeadmin/products/label_new_enabled', Mage::app()->getStore()->getId()))
+	{
+		if ($_product->getData('news_from_date') == true)
+		{
+			$_now = date("Y-m-d H:i:s");
+			$_newsFrom = $_product->getResource()->getAttribute('news_from_date')->getFrontend()->getValue($_product);
+			$_newsTo = $_product->getResource()->getAttribute('news_to_date')->getFrontend()->getValue($_product);
+			if ($_now >= $_newsFrom && $_now <= $_newsTo)
+				$_isNew = true;
+			//$_newsLabelClasses = ; //Determines label's position. Set in admin.
+			//$_newsLabelName = ; //Determines label's orientation.
+		}
+	}
+	
+	// Check if displaying "sale" label is enabled and if product has a special price
+	$_isSpecial = false;
+	if (Mage::getStoreConfig('themeadmin/products/label_sale_enabled', Mage::app()->getStore()->getId()))
+	{
+		$_specialPrice = number_format($_product->getFinalPrice(), 2);
+		$_price = number_format($_product->getPrice(), 2);
+		if ($_specialPrice != $_price)
+		$_isSpecial = true;
+	}
+?>
+
+<?php if ($_isNew == true): ?>
+	<img src="<?php echo $this->getSkinUrl("images/stickers/new.png"); ?>" alt="<?php echo $this->__('New'); ?>" class="sticker sticker-top-left" />
+<?php endif; ?>
+<?php if ($_isSpecial == true): ?>
+	<img src="<?php echo $this->getSkinUrl("images/stickers/sale.png"); ?>" alt="<?php echo $this->__('Sale'); ?>" class="sticker sticker-top-right" />
+<?php endif; ?>

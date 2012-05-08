@@ -1,0 +1,109 @@
+<?php
+/**
+ * - The main loop is based on: \BASE\DEFAULT\template\catalog\product\list.phtml
+ * - Replaced: $_helper->productAttribute($_product, $_product->getName(), 'name')
+ *   with: $this->htmlEscape($_product->getName())
+ * - Added class "first" to grid
+ */
+?>
+<?php
+    $_productCollection = $this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+	//$_productCollection->setPageSize(4);
+?>
+<?php if ($_productCollection && $_productCollection->getSize()): ?>
+<div class="itemslider-wrapper">
+
+    <?php
+    	$_collectionSize = $_productCollection->count();
+    	$_columnCount = $this->getColumnCount();
+		$_imgSize = '190';
+		switch($_columnCount) {
+		case '4':
+			$_imgSize = '190';
+			break;
+		case '5':
+			$_imgSize = '154';
+			break;
+		}
+		/* Count panes */
+		$_paneCount = ceil($_collectionSize / $_columnCount); //Current number of rows (which means: number of tabs and panes)
+
+		//Create random value. It will help to identify each instance of the slider.
+		list($usec, $sec) = explode(' ', microtime());
+		$randomSeed = (float) $sec + ((float) $usec * 100000);
+		mt_srand($randomSeed);
+		$r = mt_rand();
+	?>
+    <?php if($_paneCount > 1): ?>
+        <a id="itemslider-back-<?php echo $r; ?>" class="backward browse-button" href="#">previous</a>
+        <a id="itemslider-for-<?php echo $r; ?>" class="forward browse-button" href="#">next</a>
+    <?php endif; ?>
+    
+    <div id="itemslider-<?php echo $r; ?>" class="itemslider">
+		<?php $i=0; foreach ($_productCollection as $_product): ?>
+        
+        	<?php if ($i++%$_columnCount==0): ?>
+            	<div class="slide">
+            	<ul class="products-grid spec-grid spec-grid<?php echo $_columnCount;?>col grid-wide grid-actions-absolute grid-standalone clearer">
+            <?php endif; ?>
+            
+                <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                    <a href="<?php echo $_product->getProductUrl() ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>" width="<?php echo $_imgSize;?>" height="<?php echo $_imgSize;?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                    
+                    <?php // Code displaying product labels "new" and "sale". It's a copy of 'catalog/product/view/media_labels.phtml'
+						require('view/media_labels.inc.phtml'); ?>
+                    
+                    </a>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php //my:del echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                        <?php echo $this->htmlEscape($_product->getName()) ?>
+                        </a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <div class="actions">
+                        <?php if($_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <ul class="add-to-links">
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </li>
+            
+            <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+            	</ul>
+                </div>
+            <?php endif; ?>
+            
+        <?php endforeach ?>
+    </div> <!-- end: itemslider -->
+
+</div>
+<script type="text/javascript">
+//<![CDATA[
+  jQuery(function() {
+	jQuery("#itemslider-<?php echo $r; ?>").cycle({
+      fx: 'scrollHorz',
+	  easing: 'easeInOutCubic',
+	  timeout: 0,
+	  speed: 1000,
+	  sync: 1,
+	  pause: 1,
+	  prev: "#itemslider-back-<?php echo $r; ?>", <?php //jQuery(this).parent('div').find(".itemslider-back"), ?>
+	  next: "#itemslider-for-<?php echo $r; ?>",  <?php //jQuery(this).parent('div').find(".itemslider-for"), ?>
+	  manualTrump: 0,
+	  cleartypeNoBg: true
+	});
+  });
+//]]>
+</script>
+<?php endif; ?>

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <cloudzoom translate="label">
+			<label>Cloud Zoom</label>
+			<tab>infortis</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>200</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Cloud Zoom</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <position translate="label">
+                            <label>Position</label>
+							<comment>Specify the position of the zoom area relative to the main image.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>infortis_cloudzoom/system_config_source_position</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </position>
+                        <lens_opacity translate="label">
+                            <label>Lens Opacity (%)</label>
+							<comment>Opacity of the lens pointer.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lens_opacity>
+                        <zoom_width translate="label">
+                            <label>Zoom Area Width (px)</label>
+                            <comment>Leave empty to use default.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_width>
+                        <zoom_height translate="label">
+                            <label>Zoom Area Height (px)</label>
+                            <comment>Leave empty to use default.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_height>
+                        <big_image_width translate="label">
+                            <label>Image Width After Zooming (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </big_image_width>
+                        <big_image_height translate="label">
+                            <label>Image Height After Zooming (px)</label>
+							<comment>Leave empty to keep aspect ratio of the image (height will be calculated automatically based on width).</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </big_image_height>
+                        <tint_color translate="label">
+                            <label>Tint Color</label>
+                            <comment>Color which will cover the main image. Specify color in hex format, e.g. #aabbcc. Leave empty to disable. Does not work with Soft Focus.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tint_color>
+                        <tint_opacity translate="label">
+                            <label>Tint Opacity (%)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tint_opacity>
+						<soft_focus translate="label">
+                            <label>Soft Focus</label>
+							<comment>Applies a subtle blur effect to the main image. Does not work with tint.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </soft_focus>
+						<smooth_move translate="label">
+                            <label>Smooth Move</label>
+							<comment>Amount of smoothness/drift of the zoom image as it moves. The higher the number, the smoother/more drifty the movement will be. 1 = no smoothing.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smooth_move>
+                    </fields>
+                </general>
+            </groups>
+        </cloudzoom>
+    </sections>
+</config>

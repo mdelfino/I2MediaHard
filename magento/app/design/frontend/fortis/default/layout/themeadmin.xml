@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<cms_index_index>
+		<!-- Insert slideshow at the top of the homepage -->
+		<reference name="content">
+			<block type="themeadmin/slideshow" name="themeadmin_slideshow" template="infortis/themeadmin/slideshow.phtml" before="-" />
+		</reference>
+    </cms_index_index>
+</layout> 

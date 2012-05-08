@@ -1,0 +1,76 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ *
+ * my:
+ *
+ */
+?>
+<?php if(count($this->getStores())>1): ?>
+<?php
+	$isoCode = Mage::app()->getLocale()->getLocale();
+	$parts = explode("_", $isoCode);
+	$selectedLang = $parts[0];
+?>
+<div class="dropdown top-dropdown lang-switcher" 
+	style="background-image:url(<?php echo $this->getSkinUrl('images/flags/'.$selectedLang.'.png'); ?>)">
+	<?php
+		$selectedLang = '';
+		$out = '<ul>';
+		foreach($this->getStores() as $_lang)
+		{
+			$langName = $this->__($this->htmlEscape($_lang->getName())); //Tutaj tlumaczenie!
+			$langId = $_lang->getId();
+			$css = 'style="background-image:url(' .$this->getSkinUrl('images/flags/'.$_lang->getCode().'.png') .');"';
+			if($langId == $this->getCurrentStoreId())
+			{
+				$selectedLang = $langName;
+				$out .= '<li class="flag" ' . $css . '>'. $langName .'</li>';
+			}
+			else
+				$out .= '<li class="flag" ' . $css . '><a href="'. $_lang->getCurrentUrl() .'">'. $langName .'</a></li>';
+				
+			/*$langName = $this->htmlEscape($_lang->getName());
+			if($_lang->getId() == $this->getCurrentStoreId())
+			{
+				$out .= '<li class="lang-'. $_lang->getId() .' selected">'. $langName  .'</li>';
+				$selectedLang = $langName ;
+			}
+			else
+				$out .= '<li class="lang-'. $_lang->getId() .'"><a href="'. $_lang->getCurrentUrl() .'">'. $langName .'</a></li>';*/
+		}
+		$out .= '</ul>';
+		
+		print '<p class="label">'. $this->__('Language') .':</p><p class="text">'. $selectedLang .'</p>';
+		print $out;
+	?>        	
+</div>
+<?php endif; ?>

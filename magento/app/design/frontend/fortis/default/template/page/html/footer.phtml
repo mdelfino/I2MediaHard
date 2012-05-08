@@ -1,0 +1,181 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * - Template rebuilt
+ * - Removed Magento version and "Report Bugs"
+ */
+?>
+<?php //If option is set, add CSS class indicating dark footer skin
+	$footerClass = Mage::getStoreConfig('themeadmin/design/footer_skin', Mage::app()->getStore()->getId());
+?>
+<div class="footer-container<?php if($footerClass) echo ' dark-footer'; ?>">
+<div class="footer-container-inner">
+	<div class="footer-top">
+		<?php echo $this->getChildHtml('footer_links'); //Default Magento footer links (page.xml) ?>
+        
+        <?php //Default Magento CMS block containing links (cms.xml). Block id: "footer_links". ?>
+		<div class="links-float-right links-border-left"><?php echo $this->getChildHtml('cms_footer_links'); ?></div>
+        
+        <?php //Additional CMS block with links ?> <?php //Predefined CMS block ?>
+        <?php if ($tmp_html = $this->getChildHtml('i_block_footer_inline_links')): ?>
+            <div class="links-float-right"><?php echo $tmp_html; ?></div>
+		<?php endif; ?>
+	</div>
+	<div class="footer-main mclear">
+    	<div class="footer-main-top clearer">
+            <div class="footer-main-top-left">
+            	<?php if ($tmp_html = $this->getChildHtml('i_block_footer_social')): ?> <?php //Predefined CMS block ?>
+                    <div class="footer-social-wrapper"><?php echo $tmp_html; ?></div>
+                <?php endif; ?>
+            </div>
+            <div class="footer-main-top-right">
+                <div id="subscribe-form" class="clearer">
+                    <?php echo $this->getChildHtml('newsletter'); ?>
+                </div>
+            </div>
+        </div>
+        
+        <?php //Columns ---------------------------------------------------------------------------------- ?>
+        <?php
+        	//Set minimum height of both footer columns "footer-item"
+			$linksColumnHeight = trim(Mage::getStoreConfig('themeadmin/footer/links_column_wrapper_height', Mage::app()->getStore()->getId()));
+			$colHeightStyle = ''; //CSS specifying main footer column height
+			if (is_numeric($linksColumnHeight)) {
+				$linksColumnHeight = (int) $linksColumnHeight;
+				if ($linksColumnHeight > 0)
+					//echo '<style>.footer-item { min-height:' . $linksColumnHeight . 'px; }</style>';
+					$colHeightStyle = 'style="min-height:' . $linksColumnHeight . 'px;"';
+			}
+        ?>
+        
+		<?php
+			//Get 5 static CMS blocks "i_block_footer_links_column<X>", where <X> is a number from 1 to 5
+			$colCount = 0; //Number of existing column blocks
+			$colHtml = array();	//Columns' content
+			for ($i = 1; $i < 6; $i++)
+			{
+				if ($tmp_html = $this->getChildHtml('i_block_footer_links_column' . $i))
+				{
+					//$colHtml .= '<div class="footer-links-column-wrapper">' . $tmp_html . '</div>';
+					$colHtml[] = $tmp_html;
+					$colCount++;
+				}
+			}
+		?>
+        <div class="footer-main-bottom clearer">
+        
+        	<?php //If any of the 5 blocks exist, display rendered HTML output inside a wrapper block ?>
+        	<?php if ($colHtml != ''): ?>
+                <div class="footer-item wide" <?php if($colHeightStyle) echo $colHeightStyle; ?>>
+                    <?php
+                        //echo $colHtml; //Display existing blocks
+                        
+                        //Set column styles, if automatic width calculation is enabled
+                        $colAuto = Mage::getStoreConfig('themeadmin/footer/links_column_auto_width', Mage::app()->getStore()->getId());
+						$colWidthStyle = ''; //CSS specifying single column width and margin
+						$colWidthStyleLastCol = ''; //CSS specifying single column width and margin for the last column
+                        if ($colAuto && $colCount > 0)
+                        {
+                            //Calculate column and right margin width (percentage): 90% of space for column, 10% for margin
+                            //If there is only 1 column: width equals 100%, right margin is 0
+                            //IMPORTANT: Calculate margin only if there is more than 1 column (to avoid division by zero)
+                            if ($colCount > 1) {
+                                $colWidth = 90 / $colCount;
+                                $marginWidth = 10 / ($colCount - 1); //Subtract 1 because the last block has no right margin
+                            } else {
+                                $colWidth = 100;
+                                $marginWidth = 0;
+                            }
+							$colWidthStyle = 'style="width:' .$colWidth. '%; margin-right:' .$marginWidth. '%;"';
+							$colWidthStyleLastCol = 'style="width:' .$colWidth. '%; margin-right:0;"';
+                            //echo '<style type="text/css">.footer-links-column-wrapper { width:' .$colWidth. '%; margin-right:' .$marginWidth. '%; }</style>';
+                        }
+                    ?>
+                    <?php for ($i = 0; $i < $colCount; $i++): ?>
+                    	<?php //If the last column: replace the width style with the width style for the last column
+                        	if ($i+1 == $colCount) $colWidthStyle = $colWidthStyleLastCol; ?>
+                            
+                    	<div class="footer-links-column-wrapper" <?php if($colWidthStyle) echo $colWidthStyle; ?>>
+							<?php echo $colHtml[$i]; ?>
+						</div>
+					<?php endfor; ?>
+                    <script type="text/javascript">decorateGeneric($$('.footer-links-column-wrapper'), ['last'])</script>
+                </div>
+            <?php endif; ?>
+
+			<?php //Display company info block, if it exists ?>
+			<?php if ($tmp_html = $this->getChildHtml('i_block_footer_company')): ?>
+            	<div class="footer-item narrow last" <?php if($colHeightStyle) echo $colHeightStyle; ?>>
+            		<div class="footer-company-wrapper"><?php echo $tmp_html; ?></div>
+				</div>
+            <?php endif; ?>
+
+        </div>
+        <?php //end:Columns ---------------------------------------------------------------------------------- ?>
+        
+    </div>
+    <div class="footer-bottom mclear">
+        <p class="footer-copyright"><?php echo $this->getCopyright(); ?></p>
+        <div class="store-switcher"><?php echo $this->getChildHtml('store_switcher'); ?></div>
+		<?php if ($tmp_html = $this->getChildHtml('i_block_footer_payment')): ?> <?php //Predefined CMS block ?>
+        	<div class="footer-payment-wrapper"><?php echo $tmp_html; ?></div>
+        <?php endif; ?>
+        <div class="clearer"></div>
+    </div>
+</div> <!-- end: footer-container-inner -->
+</div>
+
+<script type="text/javascript">
+	jQuery(function() {
+		
+		jQuery(".left-edgebox").hover(function() {
+			jQuery(this).addClass('hover');
+			jQuery(this).stop(true).delay(150).animate({left: '-1px'}, 800, 'easeOutQuint'); //'easeOutCubic');
+		}, function() {
+			jQuery(this).stop(true).animate({left: '-252px'}, 800, 'easeInQuint');
+		});
+	
+		jQuery(".right-edgebox").hover(function() {
+			jQuery(this).addClass('hover');
+			jQuery(this).stop(true).delay(150).animate({right: '-1px'}, 800, 'easeOutQuint'); //'easeOutCubic');
+		}, function() {
+			jQuery(this).stop(true).animate({right: '-252px'}, 800, 'easeInQuint');
+		});
+		
+		jQuery("#mini-cart").hover(function() {
+			jQuery(this).addClass('hover');
+			jQuery("#mini-cart .block-content").stop(true, true).delay(300).slideDown(500, "easeOutBounce");
+		}, function() {
+			jQuery("#mini-cart .block-content").stop(true, true).delay(300).fadeOut(800, "easeInCubic");
+		});
+
+	});
+</script>
+
+<?php // Tooltips scripts ?>
+<?php /*?><script type="text/javascript">
+jQuery(".footer-social-wrapper .show-icons a, .footer-payment-wrapper img").tooltip({ effect:'fade', predelay:300 });
+</script><?php */?>

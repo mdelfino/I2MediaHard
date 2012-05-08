@@ -1,0 +1,49 @@
+<?php
+/**
+ *
+ */
+?>
+
+<?php
+	$slideshowEnabled = Mage::getStoreConfig('themeadmin/slideshow/enabled', Mage::app()->getStore()->getId());
+	if ($slideshowEnabled): ?>
+
+	<?php $cfg = $this->getSlideshowConfig(); //Read slideshow config ?>
+    <div class="the-slideshow slideshow-wrapper">    
+        <ul class="slideshow">
+
+		<?php foreach ($this->getStaticBlockIds() as $bid): ?>
+        	<?php if (!empty($bid)): ?>
+        		<?php echo '<li class="slide">' . $this->getLayout()->createBlock('cms/block')->setBlockId($bid)->toHtml() . '</li>'; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+        
+        <?php foreach ($this->getImgUrls() as $imgUrl): ?>
+            <li class="slide">
+                <img src="<?php echo $imgUrl; ?>" alt="Slide" />
+            </li>
+		<?php endforeach; ?>
+        
+        </ul>
+        <a href="#" id="home-slides-prev" class="backward browse-button">previous</a>
+        <a href="#" id="home-slides-next" class="forward browse-button">next</a>
+        <div id="home-slides-pager" class="tab-pager tab-pager-img tab-pager-ring-lgray"></div>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+	jQuery(function() {
+		jQuery(".slideshow").cycle({
+			<?php
+			//Print slideshow configuration
+			foreach ($this->getSlideshowConfig() as $cfg)
+				echo "{$cfg['label']}: {$cfg['value']}, ";
+			?>
+			pager: '#home-slides-pager',
+			prev: '#home-slides-prev',
+			next: '#home-slides-next'
+		});
+	});
+    //]]>
+    </script>
+
+<?php endif; ?>

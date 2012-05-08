@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+
+<?php // Creating some extra tabs: add static CMS blocks as tabs
+	$_extraTabs = '';
+	$_extraPanes = '';
+	$_tmpBlock = Mage::getModel('cms/block')
+		->setStoreId(Mage::app()->getStore()->getId())
+		->load('block_product_custom_tab1');
+	if($_tmpBlock->getIsActive()) {
+		$_extraTabs .= '<a href="#" class=""><span>' . $_tmpBlock->getTitle() . '</span></a>';
+		$_extraPanes .= '<div class="pane product-tabs-content"><div class="std">' . $_tmpBlock->getContent() . '</div></div>';
+	}
+	$_tmpBlock = Mage::getModel('cms/block')
+		->setStoreId(Mage::app()->getStore()->getId())
+		->load('block_product_custom_tab2');
+	if($_tmpBlock->getIsActive()) {
+		$_extraTabs .= '<a href="#" class=""><span>' . $_tmpBlock->getTitle() . '</span></a>';
+		$_extraPanes .= '<div class="pane product-tabs-content"><div class="std">' . $_tmpBlock->getContent() . '</div></div>';
+	}
+?>
+
+<?php $_panes = ''; ?>
+<?php foreach ($this->getTabs() as $_index => $_tab): ?>
+    <?php
+    	if($this->getChildHtml($_tab['alias']))
+			$_panes .= '<div class="pane product-tabs-content">' .$this->getChildHtml($_tab['alias']). '</div>';
+	?>
+<?php endforeach; ?>
+<?php // Append extra panes to regular panes
+	$_panes .= $_extraPanes; ?>
+
+<?php if ($_panes != ''): ?>
+	<div class="box-collateral tabs-wrapper product-tabs-wrapper">
+        <div class="large-tabs-left"></div>
+        <?php //IMPORTANT: id "product-tabs" is being used in: /catalog/product/view.phtml, /review/helper/summary*_nolinks.phtml ?>
+        <div class="large-tabs tabs" id="product-tabs">
+            <?php foreach ($this->getTabs() as $_index => $_tab): ?>
+                <?php if ($this->getChildHtml($_tab['alias'])): ?>
+                	<a href="#" id="<?php echo $_tab['alias']?>"><span><?php echo $_tab['title']?></span></a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php // Display extra tabs after regular tabs
+				echo $_extraTabs; ?>
+        </div>
+        <div class="large-tabs-right"></div>
+        <div class="tabs-panes"><?php echo $_panes; ?></div>
+	</div>
+<?php endif; ?>

@@ -1,0 +1,110 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<div class="block block-cart">
+    <?php $_cartQty = $this->getSummaryCount() ?>
+    <div class="block-title">
+    	<div class="block-title-inner">
+    	<a class="heading" href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View contents of your shopping cart') ?>"><?php echo $this->__('My Cart') ?></a>
+        
+        <?php if ($_cartQty > 0): ?>
+        	<div class="summary">
+            
+            	<a href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View contents of your shopping cart') ?>">
+                    <p class="amount"><?php echo $this->__('Cart').'<span>('.$_cartQty.')</span>'; ?></p>
+                    <p class="subtotal" title="<?php echo $this->__('Cart Subtotal'); ?>">
+                        <?php if ($this->canApplyMsrp()): ?>
+                            <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+                        <?php else: ?>
+                            <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                            <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                                <br /><span class="incl-tax">(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)</span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </p>
+                </a>
+                
+				<?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+                    <div class="to-checkout">
+                    	<?php /*?><button type="button" title="<?php echo $this->__('Checkout') ?>" class="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button><?php */?>
+                        <a href="<?php echo $this->getCheckoutUrl() ?>" title="<?php echo $this->__('Proceed to Checkout') ?>"><?php echo $this->__('Checkout'); ?><span class="icon"></span></a>
+                    </div>
+                <?php endif ?>
+            
+			</div>
+		<?php else: ?>
+        	<div class="summary"><p class="empty"><?php echo $this->__('Your cart is empty') ?></p></div>
+		<?php endif; ?>
+        </div> <!-- end: block-title-inner -->
+    </div> <!-- end: block-title -->
+
+    <?php // Moved inside "if(count($_items))": <div class="block-content"> ?>
+    <?php // Moved inside ".block-title": <div class="summary">...</div> ?>
+    <?php // Moved to the end: <div class="actions">...</div> ?>
+    
+    <?php $_items = $this->getRecentItems(); ?>
+    <?php if(count($_items)): ?>
+    	<div class="block-content">
+        
+			<?php if ($tmp_html = $this->getChildHtml('i_block_mini_cart_above_products')): ?> <?php //Predefined CMS block ?>
+                <div class="mini-cart-above-products-wrapper"><?php echo $tmp_html; ?></div>
+            <?php endif; ?>
+        
+            <p class="block-subtitle"><?php echo $this->__('Recently added item(s)') ?></p>
+            <ol id="cart-sidebar" class="mini-products-list">
+            <?php foreach($_items as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+            </ol>
+            <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+            
+            <div class="actions">
+            	<button type="button" title="<?php echo $this->__('View contents of your shopping cart') ?>" class="button btn-inline" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('View shopping cart') ?></span></span></button>
+            	<?php echo $this->getChildHtml('extra_actions') ?>
+            </div>
+
+        </div>
+    <?php else: ?>
+    	<div class="block-content">
+        
+        	<?php if ($tmp_html = $this->getChildHtml('i_block_mini_cart_above_products')): ?> <?php //Predefined CMS block ?>
+                <div class="mini-cart-above-products-wrapper"><?php echo $tmp_html; ?></div>
+			<?php else: ?>
+            	<p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+            <?php endif; ?>
+		</div>
+    <?php endif ?>
+    <?php // Here was closing tag of div.block-content ?>
+</div>
+<?php endif;?>

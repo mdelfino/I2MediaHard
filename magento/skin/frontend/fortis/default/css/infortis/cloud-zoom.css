@@ -1,0 +1,25 @@
+
+/* This is the moving lens square underneath the mouse pointer. */
+.cloud-zoom-lens {
+	border:1px solid #ccc;
+	margin:-1px; /* Set this to minus the border thickness. */
+	background-color:#fff;
+	cursor:move;
+}
+
+/* This is the zoom window. */
+.cloud-zoom-big {
+	border:1px solid #e5e5e5;
+	overflow:hidden;
+}
+
+/* This is the loading message. */
+.cloud-zoom-loading {
+    color:white;
+    background:#222;
+    padding:3px;
+    border:1px solid #000;
+}
+
+/* For 'position: inside'. */
+.product-image .mousetrap { z-index:100 !important; }

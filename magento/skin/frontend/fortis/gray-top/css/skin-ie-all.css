@@ -1,0 +1,17 @@
+/**
+ * Skin specific styling for IE
+ */
+
+/* User menu hover for IE
+-------------------------------------------------------------- */
+.user-menu > ul > li { /* white 30% */
+	background-color:transparent;
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4CFFFFFF,endColorstr=#4CFFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4CFFFFFF,endColorstr=#4CFFFFFF);
+	zoom:1;
+}
+.user-menu > ul > li:hover { /* white 40% */
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF,endColorstr=#66FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66FFFFFF,endColorstr=#66FFFFFF);
+	zoom:1;
+}

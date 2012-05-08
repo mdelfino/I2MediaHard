@@ -1,0 +1,132 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+/**
+ * - Inserted some static CMS blocks
+ * - Get store config for:
+ *		- display Custom link and Sign Up link in top links
+ */
+?>
+<?php $storeId = Mage::app()->getStore()->getId(); ?>
+<div class="header-container">
+    <div class="header">
+    
+    	<div class="header-top">
+            <div class="header-top-search-wrapper">
+            	<?php echo $this->getChildHtml('topSearch') ?>
+            	<?php /*TODO: ?><a class="advanced-search-link" href="<?php echo Mage::getURL('') ?>catalogsearch/advanced/"><?php print $this->__('Advanced Search') ?></a><?php */?>
+            </div>
+            <?php echo $this->getChildHtml('currency') ?>
+            <?php echo $this->getChildHtml('store_language') ?>
+            <?php if ($tmp_html = $this->getChildHtml('i_block_header_top_help')): ?> <?php //Predefined CMS block ?>
+            	<div class="header-top-help-wrapper"><?php echo $tmp_html; ?></div>
+            <?php endif; ?>
+            <?php if ($tmp_html = $this->getChildHtml('i_block_header_top_links')): ?> <?php //Predefined CMS block ?>
+            	<div class="header-top-links-wrapper"><?php echo $tmp_html; ?></div>
+            <?php endif; ?>
+        </div>
+        
+    	<?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+
+		<div class="header-left">
+        	<?php if ($tmp_html = $this->getChildHtml('i_block_header_contact')): ?> <?php //Predefined CMS block ?>
+            	<div class="header-contact-wrapper"><?php echo $tmp_html; ?></div>
+            <?php endif; ?>
+            <?php if ($tmp_html = $this->getChildHtml('i_block_header_banner')): ?> <?php //Predefined CMS block ?>
+            	<div class="header-banner-wrapper"><?php echo $tmp_html; ?></div>
+            <?php endif; ?>
+        </div> <!-- end: header-left -->
+        
+		<div class="header-right">
+        	<div class="header-right-secondary">
+        		<p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
+                <?php echo $this->getChildHtml('topContainer'); ?>
+			</div>
+            <div class="user-menu">
+
+				<?php // Show custom link, if enabled ?>
+                <?php if (Mage::getStoreConfig('themeadmin/header/links_custom_link_enabled', $storeId)): ?>
+                    <?php
+                        $_customLinkPath = Mage::getStoreConfig('themeadmin/header/links_custom_link_path', $storeId);
+                        $_customLinkAnchor = Mage::getStoreConfig('themeadmin/header/links_custom_link_anchor', $storeId);
+                        $_customLinkTitle = Mage::getStoreConfig('themeadmin/header/links_custom_link_title', $storeId);
+                    ?>
+                    <ul>
+                        <li class="user-menu-item user-menu-custom">
+                            <a href="<?php echo Mage::getURL('') . $_customLinkPath; ?>/" title="<?php echo $_customLinkTitle; ?>"><?php echo $_customLinkAnchor; ?></a>
+                        </li>
+                    </ul>
+                <?php endif?>
+
+                <?php echo $this->getChildHtml('topLinks') ?>
+
+				<?php // If customer is not logged in: show "Sign Up" link, if enabled ?>
+                <?php if (Mage::getSingleton('customer/session')->isLoggedIn() == false): ?>
+                    <?php if (Mage::getStoreConfig('themeadmin/header/links_signup_enabled', $storeId)): ?>
+                        <ul>
+                            <li class="user-menu-item user-menu-signup">
+                                <a href="<?php echo Mage::getURL('') ?>customer/account/create/"><?php echo $this->__('Sign Up') ?></a>
+                            </li>
+                        </ul>
+                    <?php endif?>
+                <?php endif?>
+
+                <ul>
+                	<li id="mini-cart" class="user-menu-item user-menu-cart">
+						<?php echo $this->getChildHtml('cart_sidebar') ?>
+                	</li>
+                </ul>
+            </div>
+        </div> <!-- end: header-right -->
+    </div> <!-- end: header -->
+</div>
+<?php echo $this->getChildHtml('topMenu') ?>
+	
+<?php // Additional static CMS blocks ?>
+
+<?php if ($tmp_html = $this->getChildHtml('i_block_edgebox_right')): ?> <?php //Predefined CMS block ?>
+	<div class="edgebox side-edgebox right-edgebox">
+    	<div class="edgebox-content edgebox-right-wrapper std"><?php echo $tmp_html; ?></div>
+    </div>
+<?php endif; ?>
+
+<?php if ($tmp_html = $this->getChildHtml('i_block_edgebox_left')): ?> <?php //Predefined CMS block ?>
+	<div class="edgebox side-edgebox left-edgebox">
+    	<div class="edgebox-content edgebox-left-wrapper std"><?php echo $tmp_html; ?></div>
+    </div>
+<?php endif; ?>
+
+<?php if ($tmp_html = $this->getChildHtml('i_block_edgebox_bottom_right')): ?> <?php //Predefined CMS block ?>
+	<div class="edgebox bottom-right-edgebox">
+    	<div class="edgebox-content edgebox-bottom-right-wrapper std"><?php echo $tmp_html; ?></div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+
+
+<?php /* //my: Insert Google webfonts ?>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+<?php */ ?>
+<script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Open+Sans:600:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>

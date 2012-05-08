@@ -1,0 +1,52 @@
+/**
+ * Override specific classes to change colors, fonts, backgrounds etc. 
+ * which are shared in all themes and skins
+ */
+
+/* Elements with 'Open Sans' font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+h1,
+
+.page-title h2,
+
+.fieldset .legend,
+.multiple-checkout .col2-set h2.legend,
+.info-set h2.legend,
+
+#nav > li > a,
+
+.block .block-title strong,
+
+.box-account .box-head h2,
+.order-items h2.table-caption,
+.order-items h2.sub-title,
+.order-items .order-comments h2,
+
+.footer-main-bottom .heading
+{
+	font-family:'Open Sans', sans-serif;
+	font-weight:600;
+}
+
+
+/* Footer: dark
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.footer-container.dark-footer {
+	background-image:url(../images/img/footer-bg-dark.jpg);
+	color:#999;
+}
+
+/* Main footer bottom
+-------------------------------------------------------------- */
+.dark-footer .footer-main-bottom .heading { color:#ddd; }
+
+/* Wrappers for footer content */
+.dark-footer .footer-item { background-color:rgba(255,255,255, 0.05); }
+
+/* Static CMS block with column of links */
+.dark-footer .footer-links-column-wrapper a { color:#959595; }
+.dark-footer .footer-links-column-wrapper a:hover { color:#6099c5; }
+
+.dark-footer .footer-company-wrapper .phone { color:#6099c5; }

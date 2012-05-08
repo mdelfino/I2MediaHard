@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category	Infortis
+ * @package		Infortis_ThemeAdmin
+ * @author		Infortis
+ * @copyright	Copyright 2012 Infortis
+ * @version:    1.0.0
+ */
+-->
+<config>
+    <modules>
+        <Infortis_ThemeAdmin>
+            <version>0.1.0</version>
+        </Infortis_ThemeAdmin>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <themeadmin>
+                    <file>themeadmin.xml</file>
+                </themeadmin>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <models>
+            <themeadmin>
+                <class>Infortis_ThemeAdmin_Model</class>
+            </themeadmin>
+        </models>
+        <blocks>
+            <themeadmin>
+                <class>Infortis_ThemeAdmin_Block</class>
+            </themeadmin>
+        </blocks>
+        <helpers>
+            <themeadmin>
+                <class>Infortis_ThemeAdmin_Helper</class>
+            </themeadmin>
+        </helpers>
+    </global>
+	<default>
+		<themeadmin>
+			<design>
+				<navbar_skin>default</navbar_skin>
+				<navbar_level2_link>default</navbar_level2_link>
+				<footer_skin>0</footer_skin>
+			</design>
+			<header>
+				<links_home_enabled>1</links_home_enabled>
+				<links_home_img>1</links_home_img>
+				<links_signup_enabled>1</links_signup_enabled>
+				<links_custom_link_enabled>0</links_custom_link_enabled>
+			</header>
+			<mainmenu>
+				<wide_menu_enabled>1</wide_menu_enabled>
+				<standard_menu_enabled>0</standard_menu_enabled>
+			</mainmenu>
+			<slideshow>
+				<enabled>1</enabled>
+				<directory>infortis/_home/slideshow</directory>
+				<files>test01.png,test02.png</files>
+				<fx>scrollHorz</fx>
+				<easing>easeInOutCubic</easing>
+				<timeout>10000</timeout>
+				<speed_out>800</speed_out>
+				<speed_in>800</speed_in>
+				<sync>1</sync>
+				<pause>1</pause>
+				<fit>0</fit>
+			</slideshow>
+			<products>
+				<label_new_enabled>1</label_new_enabled>
+				<label_sale_enabled>1</label_sale_enabled>
+				<product_right_box_enabled>1</product_right_box_enabled>
+				<replace_related>0</replace_related>
+				<upsell_enabled>1</upsell_enabled>
+				<replace_upsell>0</replace_upsell>
+			</products>
+			<images>
+				<product_main_width>265</product_main_width>
+				<product_main_height>265</product_main_height>
+				<product_thumbnail_width>56</product_thumbnail_width>
+				<product_thumbnail_height>56</product_thumbnail_height>
+			</images>
+			<attributes>
+				<brand_product_view_enabled>0</brand_product_view_enabled>
+				<brand_attr_id>manufacturer</brand_attr_id>
+				<brand_image_extension>png</brand_image_extension>
+				<brand_link_search_enabled>1</brand_link_search_enabled>
+			</attributes>
+			<footer>
+				<links_column_auto_width>1</links_column_auto_width>
+				<links_column_wrapper_height>120</links_column_wrapper_height>
+			</footer>
+		</themeadmin>
+	</default>
+</config>
